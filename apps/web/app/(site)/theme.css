@@ -1,0 +1,724 @@
+/* ══════════════════════════════════════════════════════════════════
+   NEWSGRAPH — theme layer
+   A deliberately neutral palette. This is infrastructure for agents,
+   not a token project: colour is used only to direct attention, and
+   the base is the black-and-white system in globals.css.
+   ══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --accent: #ffffff;
+  --accent-dim: rgba(255, 255, 255, 0.62);
+  /* A white-to-grey ramp, used for emphasised figures. */
+  --accent-gradient: linear-gradient(115deg, #ffffff 0%, #9c9c9c 100%);
+  --accent-ink: #050505;
+}
+
+/* ── Accents ──────────────────────────────────────────────────────── */
+
+/* Buttons are solid, not gradient. */
+.btn-primary,
+.nav-cta {
+  background: #ededed;
+  color: #050505;
+  font-weight: 600;
+}
+.btn-primary:hover,
+.nav-cta:hover {
+  background: #ffffff;
+  color: #050505;
+}
+
+.eyebrow-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* Headline figures carry the white-to-grey ramp. */
+.metric-num {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rail-item i {
+  background: var(--accent);
+}
+.feature-icon {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--accent);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+.footer-co,
+.footer-brand-line .footer-co {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-link:hover,
+.footer-links a:hover,
+.showcase a:hover {
+  color: #ffffff;
+}
+::selection {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+/* The code scanner band is a soft white sweep. */
+.code::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 42%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.05) 58%,
+    transparent 100%
+  );
+}
+
+/* The aurora renders as soft light, not colour. */
+.aurora-layer {
+  filter: grayscale(1) brightness(1.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-layer {
+    filter: grayscale(1) brightness(1.4);
+  }
+}
+
+/* ── Subpage header + "read more" link ────────────────────────────── */
+.page-head {
+  padding: 148px 0 24px;
+}
+.page-head .sec-title {
+  max-width: 26ch;
+  font-size: clamp(34px, 5vw, 58px);
+}
+.page-head .sec-sub {
+  max-width: 60ch;
+}
+.more {
+  margin: 26px 0 0;
+  font: 11px var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.more a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(20, 241, 149, 0.35);
+  padding-bottom: 2px;
+}
+.more a:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* ── Documentation shell ──────────────────────────────────────────── */
+.docs {
+  display: grid;
+  grid-template-columns: 236px minmax(0, 1fr);
+  gap: 56px;
+  padding: 142px 0 96px;
+  align-items: start;
+}
+.docs-side {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: 2px;
+}
+.docs-side-group {
+  margin: 20px 0 6px;
+  font: 10px var(--font-mono), monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+}
+.docs-link {
+  display: block;
+  padding: 7px 12px;
+  border-left: 1px solid var(--border-subtle);
+  font-size: 13.5px;
+  color: var(--text-tertiary);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.docs-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.035);
+  border-left-color: var(--border-strong);
+}
+.docs-link.active {
+  color: #fff;
+  border-left-color: var(--accent);
+  background: linear-gradient(90deg, rgba(20, 241, 149, 0.09), transparent 70%);
+}
+.docs-body {
+  min-width: 0;
+  max-width: 74ch;
+}
+.docs-head {
+  margin-bottom: 40px;
+}
+.docs-head h1 {
+  margin: 0 0 14px;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.06;
+  letter-spacing: -0.032em;
+  font-weight: 600;
+  color: #fff;
+}
+.docs-lead {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-tertiary);
+  max-width: 62ch;
+}
+.docs-body h2 {
+  margin: 54px 0 14px;
+  font-size: 23px;
+  letter-spacing: -0.022em;
+  font-weight: 600;
+  color: #fff;
+}
+.docs-body h3 {
+  margin: 34px 0 10px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #fff;
+}
+.docs-body p {
+  margin: 0 0 16px;
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: var(--text-tertiary);
+}
+.docs-body ul {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+}
+.docs-body li {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.docs-body li::before {
+  content: "—";
+  color: var(--text-ghost);
+}
+.docs-body code {
+  font-family: var(--font-mono), monospace;
+  font-size: 12.5px;
+  color: var(--accent);
+  background: rgba(20, 241, 149, 0.07);
+  padding: 1.5px 6px;
+  border-radius: 5px;
+}
+.docs-body .code {
+  margin: 0 0 22px;
+}
+.docs-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 22px;
+  font-size: 13.5px;
+}
+.docs-body th {
+  text-align: left;
+  padding: 10px 14px 10px 0;
+  font: 10px var(--font-mono), monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+  border-bottom: 1px solid var(--border-default);
+}
+.docs-body td {
+  padding: 11px 14px 11px 0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+.docs-nav-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 68px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-default);
+  font: 11px var(--font-mono), monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.docs-nav-foot a {
+  color: var(--accent);
+}
+.docs-nav-foot a:hover {
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .docs {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 152px;
+  }
+  /* The contents list is 365px tall on a phone — a full screen of links
+     before a single line of documentation. Lead with the article and put
+     the nav after it, where it reads as "related pages" instead. */
+  .docs-body {
+    order: 1;
+  }
+  .docs-side {
+    order: 2;
+    position: static;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-default);
+  }
+}
+
+/* ── Page-head hero actions (payment and other product pages) ─────── */
+.page-head .hero-cta {
+  justify-content: flex-start;
+  margin-top: 30px;
+}
+.page-head .hero-tiny {
+  margin-top: 14px;
+}
+.page-head .code {
+  margin-top: 40px;
+  max-width: 860px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   Drifting technical grid — the layer between the colour blooms and the
+   aurora. Masked to the top so it never competes with body copy.
+   ══════════════════════════════════════════════════════════════════ */
+.grid-field {
+  position: fixed;
+  /* Oversized by exactly one cell so the drift loops seamlessly. */
+  inset: -62px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: calc(0.55 * var(--aurora-fade, 1));
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 62px 62px;
+  -webkit-mask-image: radial-gradient(125% 85% at 50% 0%, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 74%);
+  mask-image: radial-gradient(125% 85% at 50% 0%, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 74%);
+  animation: grid-drift 26s linear infinite;
+  will-change: transform;
+}
+@keyframes grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(62px, 62px, 0);
+  }
+}
+
+/* ── Card with a live mini-widget in its head ─────────────────────── */
+.feature.viz-card {
+  padding: 0;
+}
+.feature.viz-card .feature-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 26px 26px;
+}
+.viz {
+  height: 136px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-default);
+  background: #050505;
+  display: grid;
+  align-content: center;
+  gap: 9px;
+  font: 11px/1.5 var(--font-mono), monospace;
+  overflow: hidden;
+}
+.viz-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+.viz-key {
+  color: var(--text-primary);
+}
+.viz-val {
+  margin-left: auto;
+  color: var(--text-muted);
+}
+.viz-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  flex: none;
+}
+.viz-dot.on {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(20, 241, 149, 0.13);
+}
+.viz-dots {
+  display: flex;
+  gap: 5px;
+}
+.viz-dots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: #1a1a1a;
+  display: block;
+}
+.viz-dots i.on {
+  background: var(--accent-gradient);
+}
+.viz-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+.viz-bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent-gradient);
+  animation: viz-grow 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes viz-grow {
+  from {
+    width: 0 !important;
+  }
+}
+.viz-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.viz-chip {
+  padding: 3px 9px;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.viz-chip.on {
+  border-color: rgba(20, 241, 149, 0.4);
+  color: var(--accent);
+}
+
+/* ── Labelled marquee strip ───────────────────────────────────────── */
+.marquee-strip {
+  border-block: 1px solid var(--border-default);
+  padding: 18px 0 20px;
+  overflow: hidden;
+}
+.marquee-strip-label {
+  display: block;
+  margin-bottom: 12px;
+  text-align: center;
+  font: 10px var(--font-mono), monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-field {
+    animation: none;
+  }
+  .viz-bar i {
+    animation: none;
+  }
+}
+
+/* Publication names read better in their real case than in the uppercase
+   transport-rail treatment, so the coverage strip opts out of it. */
+.marquee-strip .rail-item {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 12.5px;
+  transition: color 0.15s;
+}
+.marquee-strip .rail-item:hover {
+  color: #fff;
+}
+
+/* ── Cost calculator (the "try it out" element) ───────────────────── */
+.calc {
+  display: grid;
+  gap: 20px;
+}
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 16px;
+  align-items: baseline;
+}
+.calc-label {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+.calc-value {
+  font: 12px var(--font-mono), monospace;
+  color: #fff;
+  text-align: right;
+}
+.calc input[type="range"] {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 3px;
+  margin: 6px 0 0;
+  border-radius: 2px;
+  background: #1e1e1e;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+.calc input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  cursor: pointer;
+  border: 0;
+}
+.calc input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  /* Firefox cannot use a gradient on a range thumb, so use the ramp's midpoint. */
+  background: #d4d4d4;
+  cursor: pointer;
+}
+.calc-out {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 6px;
+  background: var(--border-default);
+  border: 1px solid var(--border-default);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.calc-out > div {
+  background: #000;
+  padding: 22px;
+}
+.calc-num {
+  font: 500 26px/1 var(--font-sans), sans-serif;
+  letter-spacing: -0.03em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+.calc-note {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+@media (max-width: 700px) {
+  .calc-out {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   Legibility pass.
+   The greys were mixed as flat hex (#333, #585858, #777) which read as
+   near-invisible inside the dark mock and code boxes, especially on the
+   10–11px mono labels. Re-express the scale as white with opacity, so it
+   composites correctly over the gradient background, and lift the floor.
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  --text-secondary: rgba(255, 255, 255, 0.86);
+  --text-tertiary: rgba(255, 255, 255, 0.74);
+  --text-muted: rgba(255, 255, 255, 0.62);
+  --text-ghost: rgba(255, 255, 255, 0.5);
+}
+
+/* Box interiors: small mono text needs more contrast than body copy, so the
+   labels and footers inside mock and code boxes sit a step above the token. */
+.mock-title,
+.code-bar {
+  color: rgba(255, 255, 255, 0.68);
+}
+.mock-live {
+  color: rgba(255, 255, 255, 0.58);
+}
+.mock-row .k {
+  color: rgba(255, 255, 255, 0.6);
+}
+.mock-row .v {
+  color: rgba(255, 255, 255, 0.9);
+}
+.mock-row .s {
+  color: rgba(255, 255, 255, 0.64);
+}
+.mock-foot {
+  color: rgba(255, 255, 255, 0.56);
+}
+.code pre {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Card widgets */
+.viz-line {
+  color: rgba(255, 255, 255, 0.72);
+}
+.viz-key {
+  color: rgba(255, 255, 255, 0.92);
+}
+.viz-val,
+.viz-chip {
+  color: rgba(255, 255, 255, 0.64);
+}
+.viz-dots i {
+  background: #262626;
+}
+
+/* Small mono lines and card tags */
+.hero-tiny,
+.cta-tiny {
+  color: rgba(255, 255, 255, 0.56);
+}
+.feature-tag {
+  color: rgba(255, 255, 255, 0.58);
+}
+.pillar-kicker,
+.nav-logo small {
+  color: rgba(255, 255, 255, 0.56);
+}
+.sec-eyebrow {
+  color: rgba(255, 255, 255, 0.62);
+}
+.metric-label {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* ── Pause decorative motion while the page is scrolling ──────────────
+   These run continuously otherwise, which shows up as jank on every
+   scroll frame. They resume 170ms after the page settles. */
+.is-scrolling .noise-overlay {
+  animation-play-state: paused;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   Mobile.
+   The nav links used to be hidden below 700px with nothing in their
+   place, which left Docs, FAQ and Pricing unreachable on a phone — the
+   worst possible omission for a developer product. The pill now wraps to
+   two rows instead: identity and the CTA, then the links.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .nav-pill {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 26px;
+    /* Bounded, or the two-row pill runs past the viewport edge. */
+    width: min(420px, calc(100vw - 24px));
+  }
+  .nav-logo {
+    padding-right: 0;
+  }
+  .nav-logo i,
+  .nav-logo small {
+    display: none;
+  }
+  .nav-cta {
+    margin-left: auto;
+  }
+  /* The links take a full second row rather than disappearing.
+     `flex: 1 0 100%` rather than `width: 100%`: the pill is inline-flex and
+     content-sized, so a percentage width is circular and overflowed the
+     viewport. A 100% flex-basis forces the wrap without needing the parent
+     to know its own width. */
+  .nav-links {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 2px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-default);
+  }
+  .nav-link {
+    padding: 7px 14px;
+  }
+
+  /* The hero eyebrow fits on one line once the least load-bearing stat
+     drops. It is repeated verbatim in the line under the buttons. */
+  .eyebrow-stat-optional {
+    display: none;
+  }
+  .eyebrow {
+    font-size: 11.5px;
+    gap: 6px;
+  }
+}
+
+/* The two-row mobile nav is ~104px tall, so the page headers need more
+   clearance than the single-row one did. */
+@media (max-width: 700px) {
+  .hero {
+    padding-top: 178px;
+  }
+  .page-head {
+    padding-top: 172px;
+  }
+  /* Only .docs: .docs-head is rendered *inside* it, so padding both pushed
+     the first heading 152px down for nothing. 178px matches .hero, which is
+     what the two-row pill actually needs. */
+  .docs {
+    /* 178px matches .hero, but this page opens with an h1 rather than a small
+       pill, so it needs a little more air under the fixed nav. */
+    padding-top: 196px;
+  }
+}
+
+/* ── Open-source row: the two links under the licence section ──────── */
+.oss-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}
+/* The GitHub mark sits with the nav links, not the CTA. */
+.nav-gh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 4px;
+  border-radius: 999px;
+  color: var(--text-tertiary);
+  transition: color 0.15s, background 0.15s;
+}
+.nav-gh:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}

@@ -1,0 +1,7 @@
+# NewsGraph
+> Source-linked news for agents. Public read-only early access.
+- Setup: https://newsgraph.vercel.app/docs
+- Connections: https://newsgraph.vercel.app/connect
+- Agent instructions: https://newsgraph.vercel.app/skill.md
+- News API: https://dnnoypytdfvsdenykooq.supabase.co/functions/v1/news-api/v2/topics
+- MCP: https://dnnoypytdfvsdenykooq.supabase.co/functions/v1/news-api/mcp
