@@ -1,0 +1,27 @@
+{
+  "name": "newsgraph-worker",
+  "version": "0.2.0",
+  "description": "NewsGraph ingestion worker: newsapi.ai \u2192 dedupe \u2192 packs (Phase 1).",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "watch:deposits": "tsx src/watch-deposits.ts",
+    "watch:deposits:loop": "tsx src/watch-deposits.ts --loop",
+    "ingest": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@newsgraph/contracts": "0.2.0",
+    "@newsgraph/db": "0.2.0",
+    "zod": "^3.24.1",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
+}
